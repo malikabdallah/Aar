@@ -1,0 +1,71 @@
+
+
+Q1)Quelle classe remplace le web.xml et comment?
+la classe qui remplace est webservletconfiguration , elle implemente la methode webapplicationinitialiser qui indique au serveur d application
+quil faut l explorer au deploiement notament la methode onstartup qui definit le dispatcher de servlet pour le mapping .
+
+
+
+Q2)Comment s’y prend-on pour mettre en session le login de l’utilisateur connecté
+on definit l annotation @Sessionattributes au dessus du nom de la classe.
+pour initialiser cette attribut de session on fait de la facon suivante
+-model.addAttribute("nomattributsession",valeur)
+du fait de l annotation spring saura qu il faut mettre cette attribut dans 
+le scope session parmis les 4 possible(session,requete,application,page)
+
+
+Q3)Quelles sont les annotations indispensables à un entity
+
+-entity
+-id pour la clef
+
+
+q4)Comment accéder à la base de données (consultation en client web)
+-acceder a l url /console
+localhost:8080/td4aar_war_exploded/console
+
+
+-il faut remplace jdbc url test par mem:testdb
+
+q5)Où utilise-t-on l’Entity Manager, et comment écrire une requête
+
+on l utilise dans un service 
+
+il faut le definir a l aide de l annotation     @PersistenceContext
+
+on creer un objet de type Query q,
+on lui affecte la veleur retourner l em.createquery("requete")
+si on a une requete parametrable on lui a affecte la valeur des para
+q.setParameter
+
+enfin 
+on recupere le result via methode (getSingleResult() o getResultlist())
+
+q6)Dans quel fichier est fait le paramétrage de la datasource
+on parametre le data source dans le  ClientWebConfig
+
+
+q7)Qu’est-ce qu’un dto et pourquoi y avoir recours
+cela permet d avoi run passplat entre deux morceau de l appli en passant juste les informations que l on veut.
+par example on transfert a une jsp un objet utiliateur , on va pas lui passe le resultat utilisateur de la BD mais sans transmettre 
+le mot de passe de l utilisateur .
+
+
+Q8)8.A quoi sert le fichier insert-data.sql?
+
+ce fichier sert a initialiser des valers de defauts a la base , donc quand la base va etre embarque on aura ces valeurs deja presentes dans la base
+
+
+
+q9)9.Pourquoi parle-t-on de transaction manager dans ClientWebConfig?
+
+il faut autorise la gestion des transaction (donc notament pour les insert et update)
+il faut etre pret a revenir en arriere en cas d erreur de l executio dune requete
+
+
+
+
+
+
+
+

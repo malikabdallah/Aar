@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:switch="${users}">
+    <h2 th:case="null">No users yet!</h2>
+    <div th:case="*">
+        <h2>Users</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>prenom</th>
+
+                <th>adresse</th>
+                <th>Edit</th>
+                <th>Delete</th>
+                <th>consulter</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.nom}"></td>
+                <td th:text="${user.prenom}"></td>
+                <td th:text="${user.adresse}"></td>
+
+                <td><a th:href="@{'/banques/editer/' + ${user.id}}">Edit</a></td>
+                <td><a th:href="@{'/banques/delete/' + ${user.id}}">supprimer</a></td>
+                <td><a th:href="@{'/banques/historique/' + ${user.id}}">consulter</a></td>
+
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a th:href="@{/banques/ajoutClient}">ajouter utilisateur</a></p>
+</div>
+</body>
+</html>

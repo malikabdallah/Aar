@@ -1,0 +1,14 @@
+dao\CompteDao.class
+dao\CompteDaoImpl.class
+dao\ClientDaoImpl.class
+dao\AbstractDaoImpl.class
+facade\BanqueService.class
+dao\LivretDaoImpl.class
+facade\BanqueServiceImpl.class
+dao\AbstractDao.class
+modele\Compte.class
+modele\Livret.class
+dao\LivretDao.class
+modele\Client.class
+run\SpringRun.class
+dao\ClientDao.class
